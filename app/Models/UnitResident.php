@@ -14,6 +14,10 @@ class UnitResident extends Model
 
     public $timestamps = false;
 
+    protected $fillable = [
+        'name', 'birthdate', 'unit_id', 'user_id'
+    ];
+
     protected $hidden = [
         'unit_id'
     ];

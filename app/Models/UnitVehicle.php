@@ -13,6 +13,10 @@ class UnitVehicle extends Model
 
     public $timestamps = false;
 
+    protected $fillable = [
+        'unit_id', 'title', 'color', 'plate'
+    ];
+
     protected $hidden = [
         'unit_id'
     ];

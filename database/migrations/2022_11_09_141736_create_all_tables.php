@@ -34,7 +34,7 @@ return new class extends Migration
             $table->foreignIdfor(User::class);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
             $table->string('name');
-            $table->string('birthdate');
+            $table->date('birthdate');
         });
         Schema::create('unit_vehicles', function (Blueprint $table) {
             $table->id();

@@ -13,6 +13,10 @@ class UnitPet extends Model
 
     public $timestamps = false;
 
+    protected $fillable = [
+        'unit_id', 'name', 'breed'
+    ];
+
     protected $hidden = [
         'unit_id'
     ];
