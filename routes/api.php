@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BilletController;
@@ -30,7 +31,7 @@ Route::middleware('auth:api')->group(function(){
 
     // Mural de avisos
     Route::get('/walls', [WallController::class, 'getAll']);
-    Route::post('/wall/{id}/like', [WallController::class, 'like']);
+    Route::post('/walls/{id}/like', [WallController::class, 'like']);
 
     // Documentos 
     Route::get('/docs', [DocController::class, 'getAll']);
@@ -41,7 +42,7 @@ Route::middleware('auth:api')->group(function(){
     Route::post('/warning/file', [WarningController::class, 'addWarningFile']);
 
     // Boletos
-    Route::get('/billets', [BilletController::class, 'getAll']);
+    Route::get('/billets/{unit}', [BilletController::class, 'getAll'])->name('billets');
 
     // Achados e perdiidos
     Route::get('/lostandfound', [LostAndFoundController::class, 'getAll']);

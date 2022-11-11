@@ -36,10 +36,10 @@ class AuthController extends Controller
             exit;
         }
 
-        $data = $validator->safe()->except('password');
-        $data['password'] = Hash::make($validator->validated()['password']);
+        $credentials = $validator->safe()->except('password');
+        $credentials['password'] = Hash::make($validator->validated()['password']);
     
-        $response['user'] = User::create($data);
+        $response['user'] = User::create($credentials);
         if($response['user']) {
             $response['token'] = Auth::attempt($validator->safe()->only('cpf', 'password'));
             if($response['token']) {
@@ -91,10 +91,9 @@ class AuthController extends Controller
 
         $user = Auth::user();
         $user->properties = Unit::where('user_id', $user->id)->get();
-
         $response['user'] = $user;
-        return response()->json($response, 200);
 
+        return response()->json($response, 200);
     }
 
     public function logout() {

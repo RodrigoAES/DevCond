@@ -13,6 +13,8 @@ class Billet extends Model
 
     public $timestamps = false;
 
+    protected $hidden = ['hash'];
+
     public function unit() {
         return $this->belongsTo(Unit::class);
     }

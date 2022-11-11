@@ -87,15 +87,15 @@ return new class extends Migration
             $table->string('title');
             $table->string('status')->default('IN_REVIEW'); // IN_REVIEW, SOLVED
             $table->date('created_at');
-            $table->text('photos');
+            $table->text('photos')->nullable();
         });
 
         Schema::create('lost_and_founds', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class);
             $table->foreign('user_id')->references('id')->on('users');
-            $table->string('status')->default('LOST'); // LOST, RECOVERED
-            $table->string('photo');
+            $table->string('status'); // LOST, FOUNDED, RECOVERED
+            $table->string('photo')->nullable();
             $table->string('description');
             $table->string('where');
             $table->date('created_at');

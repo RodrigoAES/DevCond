@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use App\Http\Controllers\BilletController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('billet/download/{file}/{token}',[BilletController::class, 'downloadFile'])->name('file');
+
+Route::get('local/temp/{file}', function (string $file, Request $request){
+    if( ! $request->hasValidSignature()) {
+        abort(401);
+    }
+    return Storage::disk('local')->get("warning-photos/$file");
+})->name('local.temp');

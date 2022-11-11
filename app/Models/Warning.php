@@ -13,6 +13,10 @@ class Warning extends Model
 
     public $timestamps = false;
 
+    protected $fillable = [
+        'unit_id', 'title', 'status', 'created_at', 'photos'
+    ];
+
     public function unit() {
         return $this->belongsTo(Unit::class);
     }

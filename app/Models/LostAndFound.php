@@ -13,6 +13,10 @@ class LostAndFound extends Model
 
     public $timestamps = false;
 
+    protected $fillable = [
+        'user_id', 'status', 'photo', 'description', 'where', 'created_at'
+    ];
+
     public function user() {
         return $this->belongsTo(User::class);
     }
