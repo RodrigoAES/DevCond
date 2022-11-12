@@ -66,8 +66,14 @@ Route::middleware('auth:api')->group(function(){
     Route::get('/reservation/{areaId}/times', [ReservationController::class, 'getTimes']);
     Route::get('/reservation/{areaId}/avaliable', [ReservationController::class, 'getAvaliable']);
 
-    Route::post('/reservation/{areaId}', [ReservationController::class, 'addReservation']);
+    Route::post('/reservation/{areaId}', [ReservationController::class, 'setReservation']);
     Route::delete('/myreservation/{id}', [ReservationController::class, 'removeReservation']);
+
+    // Usuários
+    Route::get('/user/{id}', [UserController::class, 'getUser']);
+    Route::put('/user', [UserController::class, 'updateUser']);
+    Route::post('/user/{id}/avatar', [UserController::class, 'avatar']);
+    Route::delete('/user/{id}', [UserController::class, 'deleteUser']);
 
 
 });
